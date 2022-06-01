@@ -1,0 +1,26 @@
+axon:
+  eventhandling:
+    processors:
+      order-group:
+        mode: subscribing
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+  port: 0
+spring:
+  application:
+    name: orders-service
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost/order_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
